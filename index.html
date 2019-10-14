@@ -12,18 +12,22 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="jumbotron" style="margin-bottom: 0px; background-color: deepskyblue;">
+    <div class="jumbotron" style="background-color: deepskyblue;">
             <h2 class="text-center">Get Current Weather</h2>
     </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center" style="margin-bottom: 20px;">
         <h3 class="text-center text-primary">Enter City Name</h3>
     </div>
-    <div class="div row form-group">
+    <div class="row justify-content-center form-group form-inline" id="rowDiv">
         <input type="text" name="city" id="city" class="form-control" placeholder="Input City Name">
+        <button id="submitWeather" class="btn btn-primary">Search City</button>
     </div>
 </div>
+    <div id="showWeather">
+
+    </div>
 
 
 

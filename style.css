@@ -1,0 +1,28 @@
+
+
+
+.jumbotron{
+    margin-bottom: 20px;
+}
+.container{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+#rowDiv{
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+input [type="text"]{
+    height: 40px;
+    font-size: 20px;
+}
+
+#submitWeather{
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
