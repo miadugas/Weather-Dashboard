@@ -1,49 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>weather Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- to refresh page AUTOMATICLY -->
+    <!-- <meta http-equiv="refresh" content="5" > -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather Dashboard</title>
+    
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+    
 </head>
+
 <body>
-    <div class="jumbotron" style="background-color: deepskyblue;">
-            <h2 class="text-center">Get Current Weather</h2>
-    </div>
 
-<div class="container">
-    <div class="row justify-content-center" style="margin-bottom: 20px;">
-        <h3 class="text-center text-primary">Enter City Name</h3>
+    
+    <!-- testing a loader -->
+    <body onload="myFunction()" style="margin:0;">
+
+    <div id="loader"></div>
+
+<!-- Load page after loader -->
+    
+    <div style="display:none;" id="myDiv" class="animate-bottom">
+    <div class="header">
+    <h1>Today's Weather</h1>
     </div>
-    <div class="row justify-content-center form-group form-inline" id="rowDiv">
-        <input type="text" name="city" id="city" class="form-control" placeholder="Input City Name">
-        <button id="submitWeather" class="btn btn-primary">Search City</button>
+    <!-- !need to add Geolocation; another API call -->
+
+    <div class="data">
+        <!-- !need to add icon -->
+    <h2 class="box">Current weather in <span id="location"></span></h2>
+
+    <h2 class="box">Temperature:   <span id="temperature"></span> °</h2>
+    <h2 class="box">Wind <span id = "wind"></span> mph</h2>
+    <h2 class="box">Sky conditions: <span id="sky"></span></h2>
+    <h2 class="box">Humidity: <span id="humid"> </span> °</h2>
+    <!-- !need to add UV Index; another API call -->
     </div>
+    <!-- ! need to add 5 day forecast; anoher API call  -->
+
+    <!-- ! Side bar with recent histroy -->
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
-    <div id="showWeather">
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="script.js"></script>
+    <!-- .js Links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
