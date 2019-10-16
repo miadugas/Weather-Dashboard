@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- to refresh page AUTOMATICLY -->
-    <!-- <meta http-equiv="refresh" content="5" > -->
+    <!-- to refresh page AUTOMATICLY intergrate. This may be too much at this time... <meta http-equiv="refresh" content="5"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Weather Dashboard</title>
     
@@ -30,46 +29,67 @@
 
 <body>
 
-    
-    <!-- testing a loader -->
-    <body onload="myFunction()" style="margin:0;">
-
+    <!-- page loader & load start day & time -->
+    <body onload="myFunction(); startTime(); startDate()"style="margin:0;">
     <div id="loader"></div>
 
-<!-- Load page after loader -->
-    
-    <div style="display:none;" id="myDiv" class="animate-bottom">
-    <div class="header">
-    <h1>Today's Weather</h1>
-    </div>
+<!-- Load page after loader -->   
+<div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="header">
+    <h1>Get Current Weather</h1>  
+    <div id="date"></div>
+    <div id="display"></div>
+</div>
+
     <!-- !need to add Geolocation; another API call -->
 
-    <div class="data">
-        <!-- !need to add icon -->
-    <h2 class="box">Current weather in <span id="location"></span></h2>
-
-    <h2 class="box">Temperature:   <span id="temperature"></span> °</h2>
-    <h2 class="box">Wind <span id = "wind"></span> mph</h2>
-    <h2 class="box">Sky conditions: <span id="sky"></span></h2>
-    <h2 class="box">Humidity: <span id="humid"> </span> °</h2>
-    <!-- !need to add UV Index; another API call -->
+<div class="main-container">
+    <div class="greeting"></div>
+        <div class="row justify-content-center">
+            <h3 class="enter-city">Enter A City Name</h3>   
+    <!-- !error if city is empty  -->
+        <span id="error"> </span>
     </div>
+<div class="input-area">      
+    <div class="row form-group form-inline justify-content-center" id="rowDiv">
+        <input type="text" name="city" id="city" class="form-control" placeholder="Input City Name">
+            
+        <button id="submitWeather" class="btn btn-warning">Search City</button>
+    </div>
+</div>
+
+
+
+    <div id="show"></div>
+    <!-- !need to add icon -->
+    <!-- <div class="data">
+            <h3 class="box">Current weather in <span id="location"></span></h3>
+            <h3 class="box">Temperature:   <span id="temperature"></span> °</h3>
+            <h3 class="box">Wind <span id = "wind"></span> mph</h3>
+            <h3 class="box">Sky conditions: <span id="sky"></span></h3>
+            <h3 class="box">Humidity: <span id="humid"> </span> °</h3>
+        </div> -->
+        <!-- !need to add UV Index; another API call -->
+
+    <div id="showWeather"></div>
+
+
+</div>
+</div>
     <!-- ! need to add 5 day forecast; anoher API call  -->
 
     <!-- ! Side bar with recent histroy -->
 
+    <div class="footer">
+        <div class="container">
+            <div class="row text-center" style="padding-top: 30px;">
+                <p style="color: white;">Copyright &copy; Mia In Bat Country</p>
+            </div>
+        </div>
+    </div>
 
 
 
-
-
-
-
-
-
-
-
-</div>
     <!-- .js Links -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>

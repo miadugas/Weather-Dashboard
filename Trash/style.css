@@ -11,10 +11,14 @@
     align-items: center;
 }
 
+.input-area{
+
+    
+}
+
 #rowDiv{
-    margin: auto;
-    text-align: center;
-    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
 }
 
 input [type="text"]{
@@ -23,6 +27,7 @@ input [type="text"]{
 }
 
 #submitWeather{
+    align-items: center;
     height: 40px;
     font-size: 20px;
     font-weight: bold;
