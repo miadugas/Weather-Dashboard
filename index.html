@@ -1,97 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- to refresh page AUTOMATICLY intergrate. This may be too much at this time... <meta http-equiv="refresh" content="5"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Weather Dashboard</title>
-    
-    <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"
-    />
-
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- Font Awesome -->
     <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
     crossorigin="anonymous"
     />
+<!-- Custom link -->
+<link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css" />
-    
+    <title>Mia Dugas - Weather Dashboard</title>
 </head>
 
 <body>
+<!-- JQuery Slim Build  -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
 
-    <!-- page loader & load start day & time -->
-    <body onload="myFunction(); startTime(); startDate()"style="margin:0;">
-    <div id="loader"></div>
-
-<!-- Load page after loader -->   
-<div style="display:none;" id="myDiv" class="animate-bottom">
-<div class="header">
-    <h1>Get Current Weather</h1>  
-    <div id="date"></div>
-    <div id="display"></div>
-</div>
-
-    <!-- !need to add Geolocation; another API call -->
-
-<div class="main-container">
-    <div class="greeting"></div>
-        <div class="row justify-content-center">
-            <h3 class="enter-city">Enter A City Name</h3>   
-    <!-- !error if city is empty  -->
-        <span id="error"> </span>
-    </div>
-<div class="input-area">      
-    <div class="row form-group form-inline justify-content-center" id="rowDiv">
-        <input type="text" name="city" id="city" class="form-control" placeholder="Input City Name">
-            
-        <button id="submitWeather" class="btn btn-warning">Search City</button>
-    </div>
-</div>
+<nav class="navbar navbar-expand-md fixed-top" style="background-color: black;">
+    <a class="navbar-brand">Weather Dashboard</a>
+        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#nav3"> 
+    
+            <span class="navbar-toggler-icon"></span> 
+                    </button> 
+                    <div class="navbar-collapse collapse" id="nav3"> 
+                        <ul class="navbar-nav mx-auto"> 
+                            <li class="nav-item"> 
+                                <a class="nav-link" href="#SH">Search History</a> 
+                            </li> 
+                            <li class="nav-item"> 
+                                <a class="nav-link" href="#5d">5 Day Forecast</a> 
+                            </li> 
+                        </ul> 
+                    </div> 
+                </nav> 
 
 
 
-    <div id="show"></div>
-    <!-- !need to add icon -->
-    <!-- <div class="data">
-            <h3 class="box">Current weather in <span id="location"></span></h3>
-            <h3 class="box">Temperature:   <span id="temperature"></span> °</h3>
-            <h3 class="box">Wind <span id = "wind"></span> mph</h3>
-            <h3 class="box">Sky conditions: <span id="sky"></span></h3>
-            <h3 class="box">Humidity: <span id="humid"> </span> °</h3>
-        </div> -->
-        <!-- !need to add UV Index; another API call -->
+<main role="main">
 
-    <div id="showWeather"></div>
+<!-- Main jumbotron -->
+<div class="jumbotron">
+    <div class="container">
+    <h1 class="display-3" style="text-align: center;"><div class="greeting"></div></h1>
+    <p style="text-align: center; font-style: italic; opacity: 0.80;">"Sunshine is delicious, rain is refreshing, wind braces us up, snow is exhilarating; there is really no such thing as bad weather, only different kinds of good weather."</p>
+    <p style="font-style: italic; font-size: 15px; opacity: 0.80;text-align: center;">~ John Ruskin</p>
 
-
-</div>
-</div>
-    <!-- ! need to add 5 day forecast; anoher API call  -->
-
-    <!-- ! Side bar with recent histroy -->
-
-    <div class="footer">
-        <div class="container">
-            <div class="row text-center" style="padding-top: 30px;">
-                <p style="color: white;">Copyright &copy; Mia In Bat Country</p>
-            </div>
+    <div id="search-div" class="input-group">
+    <input type="text" id="userSearch" placeholder="City" class="form-control" />
+            <span class="input-group-btn">
+<button class="btn btn-warning city-btn search" input type="submit" value="Search" id="searchBtn">Search</button>
+    </span>
         </div>
+
+    </div>
+</div>
+<div class="container" style="border: 5px solid red">
+        <h3 id="currentCityJumbo">City:</h3>
+        <img id="currentIcon">
+        <div id="jumbotronText">
+            <h6 id="currentTemp" style="margin-bottom: 10px;">Current Temp:</h6>
+            <h6 id="currentHum" style="margin-bottom: 10px;">Current Humidity</h6>
+            <h6 id="currentWind" style="margin-bottom: 10px;">Current Wind Speed</h6>
+            <h6 id="uvIndex" style="margin-bottom: 10px;">UV Index: </h6>
+            <h6 id="currentUV" style="margin-bottom: 10px;"></h6>  
+    </div>
+</div>
+<!-- Past Searches & Moment -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+<div class="container" style="border: 5px solid red">
+    <h6 id="SH">Search History:</h6>
+    <ul id="pastCities"></ul>
+</div>
+<br>
+<div class="fiveday" id="5d" style="font-size: 25px; text-align: center;">Your 5 Day Forecast</div>
+<div class="card-deck col-12">
+    <div class="card">
+        <div class="card-body">
+                <img id="day1Icon">
+                <h4 id="day1">
+                <script>
+                    $('#day1').text(moment().add(1, 'day').format('M/D/YY'));  
+                        </script></h4>
+                    <h6 id="day1Temp"></h6>
+                    <h6 id="day1Hum"></h6>
+        </div>
+        </div>
+    <div class="card">
+        <div class="card-body">
+                <img id="day2Icon">
+                <h4 id="day2">
+                    <script>
+                        $('#day2').text(moment().add(2, 'day').format('M/D/YY'));  
+                    </script>
+                    </h4>
+                    <h6 id="day2Temp"></h6>
+                    <h6 id="day2Hum"></h6>
+                </div>
+            </div>
+    <div class="card">
+        <div class="card-body">
+                <img id="day3Icon">
+                        <h4 id="day3">
+                            <script>
+                                $('#day3').text(moment().add(3, 'day').format('M/D/YY'));  
+                            </script>
+                        </h4>
+                        <h6 id="day3Temp"></h6>
+                        <h6 id="day3Hum"></h6>
+                    </div>
+                </div>
+    <div class="card">
+        <div class="card-body">
+                <img id="day4Icon">
+                <h4 id="day4">
+                    <script>
+                        $('#day4').text(moment().add(4, 'day').format('M/D/YY'));  
+                    </script>
+                </h4>
+                    <h6 id="day4Temp"></h6>
+                        <h6 id="day4Hum"></h6>
+                        </div>
+                    </div>
+    <div class="card">
+        <div class="card-body">
+                <img id="day5Icon">
+                <h4 id="day5">
+                <script>
+                    $('#day5').text(moment().add(5, 'day').format('M/D/YY'));  
+                </script>
+                </h4>
+                    <h6 id="day5Temp"></h6>
+                        <h6 id="day5Hum"></h6>
+                            </div>
+                        </div>
     </div>
 
+<!-- Example row of columns -->
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-lg-12" style="border: 5px solid red">
+            <div class="row">
+                <h5>5 Day Forecast</h5>
+                    <div class="col-xs-12">
+                            <div class="col-xs-15" id="p1">
+        <h4>Heading</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-xs-15" id="p2">
+        <h4>Heading</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-xs-15" id="p3">
+        <h4>Heading</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-xs-15" id="p4">
+        <h4>Heading</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-xs-15" id="p5" p>
+        <h4>Heading</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+</div> /container -->
+
+</main>
+
+<section class="b-bottom">
 
 
-    <!-- .js Links -->
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="fcontainer">
+    <span class="text-muted">Copyright &copy; Mia Dugas. Some Rights Reserved. Made with <span style="color:red "><i class="fas fa-xs fa-heart "></i></span>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
+
+    
 </body>
 </html>
