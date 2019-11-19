@@ -1,91 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- to refresh page AUTOMATICLY intergrate. This may be too much at this time... <meta http-equiv="refresh" content="5"> -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Bootstrap CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!-- Font Awesome -->
-    <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-    crossorigin="anonymous"
-    />
-<!-- Custom link -->
-<link rel="stylesheet" href="style.css">
 
-    <title>Mia Dugas - Weather Dashboard</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mia Dugas - Weather Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+  <!-- font awesome link -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
-<!-- JQuery Slim Build  -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+  <!-- JQuery Slim Build  -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-md fixed-top" style="background-color: black;">
-    <a class="navbar-brand">Weather Dashboard</a>
-        <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#nav3"> 
-    
-            <span class="navbar-toggler-icon"></span> 
-                    </button> 
-                    <div class="navbar-collapse collapse" id="nav3"> 
-                        <ul class="navbar-nav mx-auto"> 
-                            <li class="nav-item"> 
-                                <a class="nav-link" href="#SH">Search History</a> 
-                            </li> 
-                            <li class="nav-item"> 
-                                <a class="nav-link" href="#5d">5 Day Forecast</a> 
-                            </li> 
-                        </ul> 
-                    </div> 
-                </nav> 
-
-
-
-<main role="main">
+  <header>
+      <nav class="navbar navbar-default">
+          <div class="container">
+            <div class="navbar-header">
+              
+              <a class="navbar-brand" href="#">Mia<span class="logo-dec">Dugas</a>
+            </div>
+          </div>
+        </nav>
+  </header>
 
 <!-- Main jumbotron -->
-<div class="jumbotron">
+<div class="jumbotron image-box" >
     <div class="container">
     <h1 class="display-3" style="text-align: center;"><div class="greeting"></div></h1>
-    <p style="text-align: center; font-style: italic; opacity: 0.80;">"Sunshine is delicious, rain is refreshing, wind braces us up, snow is exhilarating; there is really no such thing as bad weather, only different kinds of good weather."</p>
-    <p style="font-style: italic; font-size: 15px; opacity: 0.80;text-align: center;">~ John Ruskin</p>
-
     <div id="search-div" class="input-group">
     <input type="text" id="userSearch" placeholder="City" class="form-control" />
             <span class="input-group-btn">
-<button class="btn btn-warning city-btn search" input type="submit" value="Search" id="searchBtn">Search</button>
+<button class="btn btn-primary city-btn search" input type="submit" value="Search" id="searchBtn" style="background-color: #50c0e9;">Search</button>
     </span>
         </div>
-
+        <p class="quote" style="text-align: center; font-style: italic; opacity: 0.80; color: white">"Sunshine is delicious, rain is refreshing, wind braces us up, snow is exhilarating; <br> there is really no such thing as bad weather, only different kinds of good weather."</p>
+        <p style="font-style: italic; font-size: 15px; opacity: 0.80;text-align: center;">~ John Ruskin</p>
     </div>
 </div>
-<div class="container" style="border: 5px solid red">
-        <h3 id="currentCityJumbo">City:</h3>
-        <img id="currentIcon">
-        <div id="jumbotronText">
-            <h6 id="currentTemp" style="margin-bottom: 10px;">Current Temp:</h6>
-            <h6 id="currentHum" style="margin-bottom: 10px;">Current Humidity</h6>
-            <h6 id="currentWind" style="margin-bottom: 10px;">Current Wind Speed</h6>
-            <h6 id="uvIndex" style="margin-bottom: 10px;">UV Index: </h6>
-            <h6 id="currentUV" style="margin-bottom: 10px;"></h6>  
-    </div>
-</div>
-<!-- Past Searches & Moment -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3 class="section-heading"> Your Results: </h3>
+            </div>
+        </div>
 
-<div class="container" style="border: 5px solid red">
-    <h6 id="SH">Search History:</h6>
-    <ul id="pastCities"></ul>
-</div>
-<br>
-<div class="fiveday" id="5d" style="font-size: 25px; text-align: center;">Your 5 Day Forecast</div>
+        <div class="row text-center">
+            <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-question fa-stack-1x fa-inverse"></i></span>
+              <h3 id="current">Current forcast for:</h3>
+              <div class="userSearch">
+            
+            <h3 id="currentCityJumbo">City:</h3>
+            <img id="currentIcon">
+            <div id="jumbotronText">
+                <h6 id="currentTemp" style="margin-bottom: 10px;">Current Temp:</h6>
+                <h6 id="currentHum" style="margin-bottom: 10px;">Current Humidity</h6>
+                <h6 id="currentWind" style="margin-bottom: 10px;">Current Wind Speed</h6>
+                <h6 id="uvIndex" style="margin-bottom: 10px;">UV Index: </h6>
+                <h6 id="currentUV" style="margin-bottom: 10px;"></h6>  
+        </div>
+      </div>
+            </div>
+            <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-history fa-stack-1x fa-inverse"></i></span>
+                  <!-- Past Searches & Moment -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        
+          <h3 id="SH">Search History:</h3>
+          <span id="pastCities"></span>
+            </div>
+          
+        </div>
+    </div>
+</section>
+  <br>
+
+<hr>
+  <div class="fiveday" id="5d" style="font-size: 25px; text-align: center;">Your 5 Day Forecast</div>
 <div class="card-deck col-12">
+    
     <div class="card">
         <div class="card-body">
                 <img id="day1Icon">
@@ -96,7 +100,8 @@
                     <h6 id="day1Temp"></h6>
                     <h6 id="day1Hum"></h6>
         </div>
-        </div>
+  </div>
+
     <div class="card">
         <div class="card-body">
                 <img id="day2Icon">
@@ -120,6 +125,7 @@
                         <h6 id="day3Temp"></h6>
                         <h6 id="day3Hum"></h6>
                     </div>
+
                 </div>
     <div class="card">
         <div class="card-body">
@@ -132,6 +138,7 @@
                     <h6 id="day4Temp"></h6>
                         <h6 id="day4Hum"></h6>
                         </div>
+
                     </div>
     <div class="card">
         <div class="card-body">
@@ -144,31 +151,37 @@
                     <h6 id="day5Temp"></h6>
                         <h6 id="day5Hum"></h6>
                             </div>
-                        </div>
+
+                        </div>              
     </div>
+    
+  <!--start footer-->
+  <footer>
 
-</main>
-
-<section class="b-bottom">
-
-
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-<div class="fcontainer">
-    <span class="text-muted">Copyright &copy; Mia Dugas. Some Rights Reserved. Made with <span style="color:red "><i class="fas fa-xs fa-heart "></i></span>
+    <div id="sub-footer">
+        <div class="container">                
+                    <div class="text-center center-block">
+                        <br />
+                            <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                          <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                          <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-link" class="fa fa-linkedin-square fa-3x social"></i></a>
+                          <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gh" class="fa fa-github-square fa-3x social"></i></a>
+                          <a href="mailto:mia.dugas@du.edu"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+            </div>             
+            </div>
+  </div>
+  </footer>
+  <!--end footer-->
+  <div class="copyright">
+      <span>&copy; Copyright 2019 Mia Dugas. Some Rights Reserved. Made with <i class="fa fa-xs fa-heart" style="color:red "></i></span>
 </div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script.js"></script>
-
-    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./js/script.js"></script>
 </body>
+
 </html>
