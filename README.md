@@ -11,4 +11,4 @@ Includes a 5-Day Forecast below the current weather conditions. Displaying - Dat
 * Adding zip code based search with additional an API call.
 
 
-![Image of Weather DB]()
+![Image of Weather DB](https://github.com/miadugas/Weather-Dashboard/blob/master/img/WD-1.png)
