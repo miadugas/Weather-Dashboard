@@ -12,3 +12,5 @@ Includes a 5-Day Forecast below the current weather conditions. Displaying - Dat
 
 
 ![Image of Weather DB](https://github.com/miadugas/Weather-Dashboard/blob/master/img/WD-1.png)
+![Image of Weather DB](https://github.com/miadugas/Weather-Dashboard/blob/master/img/WD-2.png)
+![Image of Weather DB](https://github.com/miadugas/Weather-Dashboard/blob/master/img/WD-3.png)
