@@ -6,6 +6,9 @@ The dashboard displays the following current weather conditions: City, Date, Ico
 
 Includes a 5-Day Forecast below the current weather conditions. Displaying - Date, Icon image (visual representation of weather conditions), Temperature & Humidity.
 
+Link to site:https://miadugas.github.io/Weather-Dashboard/
+
+
 --------------------- To Do ------------------------------
 
 * Adding zip code based search with additional an API call.
