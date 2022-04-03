@@ -16,7 +16,7 @@ var thehours = new Date().getHours();
     $('.greeting').append(themessage);
 
 // set a few variables
-var currentCity = "Hell";
+var currentCity = "Denver";
 var searchHistory = [];
 var storedCities = JSON.parse(sessionStorage.getItem("userSearches"));
 
